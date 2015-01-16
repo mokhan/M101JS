@@ -1,0 +1,15 @@
+λ mongo
+MongoDB shell version: 2.4.9
+connecting to: test
+test> show dbs
+local   0.078125GB
+m101    0.203125GB
+mongoapp_development    0.203125GB
+test> use m101
+switched to db m101
+m101> show collections
+hw1_1
+system.indexes
+m101> db['hw1_1'].find()
+{ "_id" : ObjectId("51e4524ef3651c651a42331c"), "answer" : "Hello from MongoDB!" }
+m101> 
