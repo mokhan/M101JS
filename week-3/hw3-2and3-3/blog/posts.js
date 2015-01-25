@@ -30,15 +30,15 @@ function PostsDAO(db) {
       "date": new Date()
     };
 
-      // now insert the post
-      posts.insert(post, function (err, result) {
-        "use strict";
+    // now insert the post
+    posts.insert(post, function (err, result) {
+      "use strict";
 
-        if (err) {
-          return callback(err, null);
-        }
-        return callback(null, permalink);
-      });
+      if (err) {
+        return callback(err, null);
+      }
+      return callback(null, permalink);
+    });
   };
 
   this.getPosts = function(num, callback) {
@@ -89,9 +89,11 @@ function PostsDAO(db) {
       comment['email'] = email
     }
 
-    // hw3.3 TODO
-    callback(Error("addComment NYI"), null);
-  }
+    posts.update({ 'permalink': permalink }, { '$push': { comments: comment } }, function(error, updated){
+      if (error) return callback(error, null);
+      callback(error, updated);
+    });
+  };
 }
 
 module.exports.PostsDAO = PostsDAO;
