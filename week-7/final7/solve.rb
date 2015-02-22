@@ -23,7 +23,7 @@ def main
     image_id = image['_id']
     if used_images.key?(image_id) == false
       puts "Deleting: #{image_id}"
-      #images_collection.remove("_id": image_id)
+      images_collection.remove("_id": image_id)
       deleted += 1
     end
   end
