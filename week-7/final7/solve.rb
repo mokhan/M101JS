@@ -29,6 +29,10 @@ def main
   end
   puts "USED: #{used_images.size}"
   puts "DELETED: #{deleted}"
+  puts "TOTAL: #{images_collection.find.count}"
+
+  tagged_kittens = images_collection.find({ 'tags': 'kittens' }).count()
+  puts "Kittens: #{tagged_kittens}"
 end
 
 main
